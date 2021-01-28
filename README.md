@@ -15,7 +15,7 @@ You can:
 Run this command from your terminal:
 
 ```
-curl -fsSL https://raw.githubusercontent.com/UmbertoSavoia/42helpers/main/dock > dock && chmod 755 dock
+curl -fsSL https://raw.githubusercontent.com/UmbertoSavoia/42helpers/main/src/dock > dock && chmod 755 dock
 ```
 
 ### Use
