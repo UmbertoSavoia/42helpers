@@ -1,3 +1,5 @@
+<img src="https://www.42.fr/wp-content/themes/42/images/42_logo_black.svg" width="150" />
+
 # 42helpers
 
 ## Dock aka Docker Helper
@@ -14,7 +16,7 @@ You can:
 
 Run this command from your terminal:
 
-```
+```bash
 curl -fsSL https://raw.githubusercontent.com/UmbertoSavoia/42helpers/main/src/dock > dock && chmod 755 dock
 ```
 
@@ -41,7 +43,7 @@ You can:
 
 Run this command from your terminal:
 
-```
+```bash
 curl -fsSL https://raw.githubusercontent.com/UmbertoSavoia/42helpers/main/src/42brew > 42brew && chmod 755 42brew
 ```
 
@@ -51,3 +53,9 @@ curl -fsSL https://raw.githubusercontent.com/UmbertoSavoia/42helpers/main/src/42
 |---|---|
 `42brew`|Installs Brew
 `clean`|Removes your Brew installation
+
+## Contributors
+
+- @UmbertoSavoia ([usavoia](https://profile.intra.42.fr/users/usavoia))
+- @leeoocca ([lrocca](https://profile.intra.42.fr/users/lrocca))
+- Mattia ([mcossu](https://profile.intra.42.fr/users/mcossu))
