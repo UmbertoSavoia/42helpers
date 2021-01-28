@@ -27,3 +27,27 @@ curl -fsSL https://raw.githubusercontent.com/UmbertoSavoia/42helpers/main/src/do
 `dock`|Moves Container folder
 `clean`|Removes all traces of Docker
 `kill`|Kills Docker process forcibly
+
+## 42brew
+
+Use this helper to manage your Brew installation.
+
+You can:
+
+- install Brew
+- remove your Brew installation
+
+### Install
+
+Run this command from your terminal:
+
+```
+curl -fsSL https://raw.githubusercontent.com/UmbertoSavoia/42helpers/main/src/42brew > 42brew && chmod 755 42brew
+```
+
+### Use
+
+|command|description|
+|---|---|
+`42brew`|Installs Brew
+`clean`|Removes your Brew installation
