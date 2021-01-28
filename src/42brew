@@ -1,0 +1,55 @@
+#!/bin/zsh
+
+NC='\e[0m'
+RED='\e[31m'
+GREEN='\e[32m'
+BLUE='\e[34m'
+ORANGE='\e[33m'
+
+echo "${BLUE}"
+echo "    ____  ____  _______       __   ";
+echo "   / __ )/ __ \/ ____/ |     / /   ";
+echo "  / __  / /_/ / __/  | | /| / /    ";
+echo " / /_/ / _, _/ /___  | |/ |/ /     ";
+echo "/_____/_/ |_/_____/_ |__/|__/      ";
+echo "      / /_  ___  / /___  ___  _____";
+echo "     / __ \/ _ \/ / __ \/ _ \/ ___/";
+echo "    / / / /  __/ / /_/ /  __/ /    ";
+echo "   /_/ /_/\___/_/ .___/\___/_/     ";
+echo "               /_/                 ";
+echo "                            usavoia";
+echo "                             lrocca";
+echo "                             mcossu";
+echo "${NC}"
+
+# Clean instance
+if [[ "$1" == "clean" ]]
+then
+	sed -i "" 's/export PATH=~\/goinfre\/.brew.*//g' ~/.zshrc
+	rm -rf ~/goinfre/.brew
+	echo "${RED}Deleted${NC} Brew instance"
+	echo ""
+	exit
+fi
+
+if ls -a ~/goinfre/ | grep -q .brew
+then
+	 echo "${ORANGE}Stopped${NC} Brew is already installed"
+	 echo ""
+	 exit
+fi
+
+# Download Brew
+echo "${GREEN}Downloading${NC} Brew from its repository"
+git clone --depth=1 https://github.com/Homebrew/brew ~/goinfre/.brew
+
+# Add custom PATH
+if ! grep -q "export PATH=~/goinfre/.brew/bin:$PATH" ~/.zshrc
+then
+	echo "export PATH=~/goinfre/.brew/bin:$PATH" >> ~/.zshrc
+	source ~/.zshrc
+fi
+
+# Trigger brew upgrade
+echo "${GREEN}Updating${NC} Brew"
+brew update
