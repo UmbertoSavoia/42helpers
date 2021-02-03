@@ -8,10 +8,11 @@ current_path=`pwd`
 if [ -d ~/.42helpers ]
 then
 	cd ~/.42helpers
-	if git diff --exit-code origin/main..main > /dev/null
+	git fetch origin
+	if ! git diff --exit-code origin/main..main > /dev/null
 	then
 		echo "Upgrading ${bold}42helpers${normal}..."
-		git pull origin main
+		git pull origin main --no-rebase
 		echo "Done :-)"
 	else
 		echo "${bold}42helpers${normal} is up to date."
