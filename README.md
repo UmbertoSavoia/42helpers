@@ -2,25 +2,38 @@
 
 # 42helpers
 
-An helpers collection that aids you with everyday tasks.
+A suite of helpers that will aid you with everyday tasks.
+
 ## Installation
 
-Just run this command in a terminal to get started.
+Start by running this command in a terminal.
 
 ```zsh
 curl -fsSL https://raw.githubusercontent.com/UmbertoSavoia/42helpers/main/tools/install.sh | zsh
 ```
+
+Then reload your session (`source ~/.zshrc`) and run `42help` to get started.
+
 ## Use
 
 Have a look at the sections below for the availible helpers and commands.
 
 <details>
-<summary><b>42help</b></summary>
-Don't worry, just run it. It will guide you.
+	<summary>
+		<b>42help</b>
+	</summary>
+
+Main command:
+
+- lists the availible helpers
+- lets you manually upgrade and uninstall the suite
+
 </details>
 
 <details>
-<summary><b>42docker</b></summary>
+	<summary>
+		<b>42docker</b>
+	</summary>
 
 Use this helper to manage your Docker installation.
 
@@ -28,30 +41,32 @@ Use this helper to manage your Docker installation.
 
 `42docker help` for a list of commands.
 
-|command|description|
-|---|---|
+|command  |description                  |
+|---------|-----------------------------|
 `42docker`|Moves Container folder
-`clean`|Removes Container folder
-`kill`|Kills Docker process forcibly
+`clean`   |Removes Container folder
+`kill`    |Kills Docker process forcibly
 
 </details>
 
 <details>
-<summary><b>42brew</b></summary>
-
+	<summary>
+		<b>42brew</b>
+	</summary>
+	
 Use this helper to manage your Brew installation.
 
 You can:
 
-- install Brew
-- remove your Brew installation
+- install Homebre
+- uninstall Homebrew
 
 ### Use
 
-|command|description|
-|---|---|
-`42brew`|Installs Brew
-`clean`|Removes your Brew installation
+|command|description       |
+|-------|------------------|
+`42brew`|Installs Homebrew
+`clean` |Uninstalls Homerew
 
 </details>
 
@@ -60,3 +75,7 @@ You can:
 - @UmbertoSavoia ([usavoia](https://profile.intra.42.fr/users/usavoia))
 - @leeoocca ([lrocca](https://profile.intra.42.fr/users/lrocca))
 - Mattia ([mcossu](https://profile.intra.42.fr/users/mcossu))
+
+## License
+
+MIT
