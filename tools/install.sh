@@ -1,18 +1,33 @@
 #!/bin/zsh
 
-bold=`tput bold`
 normal=`tput sgr0`
+bold=`tput bold`
 
-if [ -d ~/.42helpers ]
+# Installation dir
+FTH=~/.42helpers
+
+# Should it check if var is already defined?
+# if [ -n "${FTH+1}" ]
+# then
+# 	FTH=~/.42helpers
+# fi
+
+if [ -d $FTH ]
 then
-	echo "${bold}42helpers${normal} is already installed. You'll need to remove ~/.42helpers if you want to install."
-	exit
+	echo "${bold}42helpers${normal} is already installed."
+	exit 1
 else
 	echo "Installing ${bold}42helpers${normal}..."
-	git clone https://github.com/UmbertoSavoia/42helpers.git ~/.42helpers
+	git clone https://github.com/UmbertoSavoia/42helpers.git ${FTH}
 fi
 
-if [ -d ~/.42helpers ]
+if ! grep -q "zsh ${FTH}/tools/rc.sh" ~/.zshrc
+then
+	echo "Adding startup command to ~/.zshrc..."
+	echo "\nzsh ~/.42helpers/tools/rc.sh" >> ~/.zshrc
+fi
+
+if [ -d $FTH ]
 then
 	echo "Hooray! ${bold}42helpers${normal} has been installed."
 else
