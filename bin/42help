@@ -10,8 +10,8 @@ case `select_opt "42docker" "42brew" "Version" "Upgrade" "Uninstall" "Quit"` in
 	0) 42docker;;
 	1) 42brew;;
 	2) echo ${version};;
-	3) ~/.42helpers/tools/upgrade.sh;;
-	4) ~/.42helpers/tools/uninstall.sh;;
+	3) ${FTH}/tools/upgrade.sh;;
+	4) ${FTH}/tools/uninstall.sh;;
 	5) exit 0;;
 esac
 
