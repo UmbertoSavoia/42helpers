@@ -1,14 +1,16 @@
 #!/bin/bash
 
-. ../tools/select.sh
+~/.42helpers/tools/check_for_upgrade.sh
+
+. ~/.42helpers/tools/select.sh
 
 version=v2.0
 
-echo -e "Welcome\n"
+echo -e "Hey ${USER}! Looks like you need some help. What can I do for you?\n"
 
 case `select_opt "42docker" "42brew" "Version" "Upgrade" "Uninstall" "Quit"` in
-    0) 42docker;;
-    1) 42brew;;
+	0) 42docker;;
+	1) 42brew;;
 	2) echo ${version};;
 	3) ~/.42helpers/tools/upgrade.sh;;
 	4) ~/.42helpers/tools/uninstall.sh;;
