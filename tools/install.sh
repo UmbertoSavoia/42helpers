@@ -12,4 +12,10 @@ else
 	git clone https://github.com/UmbertoSavoia/42helpers.git ~/.42helpers
 fi
 
-echo "Hooray! ${bold}42helpers${normal} has been installed."
+if [ -d ~/.42helpers ]
+then
+	echo "Hooray! ${bold}42helpers${normal} has been installed."
+else
+	echo "An error occurred during the installation process."
+	exit 1
+fi
