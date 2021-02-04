@@ -1,7 +1,6 @@
 #!/bin/zsh
 
-bold=`tput bold`
-normal=`tput sgr0`
+. ${FTH}/tools/styles.sh &> /dev/null
 
 function upgrade_prompt {
 	while read -t -k 1 option; do true; done
