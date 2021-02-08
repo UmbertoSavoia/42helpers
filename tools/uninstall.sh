@@ -1,9 +1,12 @@
 #!/bin/zsh
 
-normal=`tput sgr0`
-bold=`tput bold`
+# Define FTH if undefined
+# ! [[ -v FTH ]] && FTH=~/.42helpers
 
 FTH=~/.42helpers
+
+normal=`tput sgr0`
+bold=`tput bold`
 
 function confirmation_prompt {
 	while read -t -k 1 option; do true; done
