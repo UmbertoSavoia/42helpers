@@ -1,0 +1,17 @@
+#!/bin/bash
+
+. ${FTH}/tools/select.sh
+
+version=v2.0
+
+echo -e "Hey ${USER}! Looks like you need some help. What can I do for you?\n"
+
+case `select_opt "42docker" "42brew" "Version" "Upgrade" "Uninstall" "Quit"` in
+	0) 42docker;;
+	1) 42brew;;
+	2) echo ${version};;
+	3) ${FTH}/tools/upgrade.sh;;
+	4) ${FTH}/tools/uninstall.sh;;
+	5) exit 0;;
+esac
+

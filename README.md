@@ -2,60 +2,80 @@
 
 # 42helpers
 
-## Dock aka Docker Helper
+A suite of helpers that will aid you with everyday tasks.
+
+## Installation
+
+Start by running this command in a terminal.
+
+```zsh
+curl -fsSL https://raw.githubusercontent.com/UmbertoSavoia/42helpers/main/tools/install.sh | zsh
+```
+
+Then reload your session (`source ~/.zshrc`) and run `42help` to get started.
+
+## Use
+
+Have a look at the sections below for the availible helpers and commands.
+
+<details>
+	<summary>
+		<b>42help</b>
+	</summary>
+
+Main command:
+
+- lists the availible helpers
+- lets you manually upgrade and uninstall the suite
+
+</details>
+
+<details>
+	<summary>
+		<b>42docker</b>
+	</summary>
 
 Use this helper to manage your Docker installation.
 
-You can:
-
-- move the Containers folder so that it doesn't take up space in your Home
-- clean Docker's Containers folder
-- kill Docker forcibly
-
-### Install
-
-Run this command from your terminal:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/UmbertoSavoia/42helpers/main/src/dock > dock && chmod 755 dock
-```
-
 ### Use
 
-`./dock help` for a list of commands.
+`42docker help` for a list of commands.
 
-|command|description|
-|---|---|
-`dock`|Moves Container folder
-`clean`|Removes all traces of Docker
-`kill`|Kills Docker process forcibly
+|command  |description                  |
+|---------|-----------------------------|
+`42docker`|Moves Container folder
+`clean`   |Removes Container folder
+`kill`    |Kills Docker process forcibly
 
-## 42brew
+</details>
 
+<details>
+	<summary>
+		<b>42brew</b>
+	</summary>
+	
 Use this helper to manage your Brew installation.
 
 You can:
 
-- install Brew
-- remove your Brew installation
-
-### Install
-
-Run this command from your terminal:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/UmbertoSavoia/42helpers/main/src/42brew > 42brew && chmod 755 42brew
-```
+- install Homebre
+- uninstall Homebrew
 
 ### Use
 
-|command|description|
-|---|---|
-`42brew`|Installs Brew
-`clean`|Removes your Brew installation
+|command|description       |
+|-------|------------------|
+`42brew`|Installs Homebrew
+`clean` |Uninstalls Homerew
+
+</details>
 
 ## Contributors
 
 - @UmbertoSavoia ([usavoia](https://profile.intra.42.fr/users/usavoia))
 - @leeoocca ([lrocca](https://profile.intra.42.fr/users/lrocca))
 - Mattia ([mcossu](https://profile.intra.42.fr/users/mcossu))
+
+## License
+
+MIT

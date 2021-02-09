@@ -31,13 +31,19 @@ then
 	exit
 fi
 
-echo "${RED}Closing${NC}\t\tDocker"
-killall Docker &> /dev/null
+if pgrep -xq Docker
+then
+	echo "${RED}Closing${NC} Docker..."
+	killall Docker &> /dev/null
+else
+	echo "Docker wasn't running."
+	killexit=1
+fi
 
 if [[ "$1" == "kill" ]]
 then
 	echo ""
-	exit
+	exit killexit
 fi
 
 if [[ "$1" == "clean" ]]
@@ -49,20 +55,17 @@ then
 	exit
 fi
 
-if ! ls -a ~/goinfre/.docker/ &> grep -q containers
+if [ -d ~/goinfre/.docker/containers ]
 then
-	mkdir ~/goinfre/.docker &> /dev/null
-	mkdir ~/goinfre/.docker/containers &> /dev/null
+	mkdir -p ~/goinfre/.docker/containers
 	echo "${GREEN}Created${NC}\t\tnew folder for Containers"
 fi
 
-if ls -F ~/Library/Containers/ | grep -q com.docker.docker/
+if [ -d ~/Library/Containers/com.docker.docker ]
 then
 	cp -R ~/Library/Containers/com.docker.docker/ ~/goinfre/.docker/containers/ &> /dev/null
 	echo "${ORANGE}Moved${NC}\t\toriginal folder to new"
-fi
-
-if ! ls -F ~/Library/Containers/ | grep -q com.docker.docker@
+elif [ -h ~/Library/Containers/com.docker.docker ]
 then
 	rm -rf ~/Library/Containers/com.docker.docker
 	ln -sf ~/goinfre/.docker/containers ~/Library/Containers/com.docker.docker

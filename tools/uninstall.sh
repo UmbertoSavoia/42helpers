@@ -1,18 +1,43 @@
 #!/bin/zsh
 
-underline=`tput smul`
-nounderline=`tput rmul`
-bold=`tput bold`
-normal=`tput sgr0`
+# Define FTH if undefined
+# ! [[ -v FTH ]] && FTH=~/.42helpers
 
-if [ -d ~/.42helpers ]
+FTH=~/.42helpers
+
+normal=`tput sgr0`
+bold=`tput bold`
+
+function confirmation_prompt {
+	while read -t -k 1 option; do true; done
+	[[ "$option" != ($'\n'|"") ]] && echo
+	echo -n "Are you sure you want to uninstall ${bold}42helpers${normal}? [Y/n] "
+	read -r -k 1 option
+	[[ "$option" != $'\n' ]] && echo
+	case "$option" in
+		[yY$'\n']) echo -n "Ok! " ;;
+		[nN]) exit ;;
+	esac
+}
+
+if [ -d $FTH ]
 then
+	# Ask user confirmation
+	confirmation_prompt
+
 	echo "Deleting ${bold}42helpers${normal} folder..."
-	rm -rf ~/.42helpers
-	echo "Goodbye! (-_-;)"
+	rm -rf ${FTH}
+
+	echo "Removing startup command from ~/.zshrc..."
+	sed -i '' 's/zsh ~\/.42helpers\/tools\/rc.sh//g' ~/.zshrc
+
+	# Remove trailing spaces and newlines at the end of .zshrc
+	# https://stackoverflow.com/a/8635286
+	perl -e 'undef $/; $_ = <>; s/\s+\z/\n/; print' ~/.zshrc > ~/.zshrc-tmp
+	mv ~/.zshrc-tmp ~/.zshrc
+
+	echo "Goodbye ${USER}! (-_-;)"
 else
-	echo "${bold}42helpers${normal} is not installed. You can install it by following the instructions on this page:"
-	echo "> ${underline}https://github.com/UmbertoSavoia/42helpers${nounderline}"
-	echo ""
-	echo "If your terminal emulator supports it, you can open the link holding Cmd/Ctrl and clicking on it ;-)"
+	echo "${bold}42helpers${normal} is not installed."
+	exit 1
 fi

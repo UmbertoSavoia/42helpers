@@ -27,20 +27,20 @@ if [[ "$1" == "clean" ]]
 then
 	sed -i "" 's/export PATH=~\/goinfre\/.brew.*//g' ~/.zshrc
 	rm -rf ~/goinfre/.brew
-	echo "${RED}Deleted${NC} Brew instance"
+	echo "${RED}Deleted${NC} Homebrew instance"
 	echo ""
 	exit
 fi
 
-if ls -a ~/goinfre/ | grep -q .brew
+if [ -d ~/goinfre/.brew ]
 then
-	 echo "${ORANGE}Stopped${NC} Brew is already installed"
+	 echo "${ORANGE}Stopped${NC} Homebrew is already installed"
 	 echo ""
-	 exit
+	 exit 1
 fi
 
-# Download Brew
-echo "${GREEN}Downloading${NC} Brew from its repository"
+# Download Homebrew
+echo "${GREEN}Downloading${NC} Homebrew"
 git clone --depth=1 https://github.com/Homebrew/brew ~/goinfre/.brew
 
 # Add custom PATH
@@ -50,6 +50,8 @@ then
 	source ~/.zshrc
 fi
 
-# Trigger brew upgrade
-echo "${GREEN}Updating${NC} Brew"
+# Trigger Homebrew upgrade
+echo "${GREEN}Updating${NC} Homebrew"
 brew update
+
+echo "Done. :-)"
