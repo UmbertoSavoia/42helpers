@@ -25,7 +25,6 @@ echo "${NC}"
 # Clean instance
 if [[ "$1" == "clean" ]]
 then
-	sed -i "" 's/export PATH=~\/goinfre\/.brew.*//g' ~/.zshrc
 	rm -rf ~/goinfre/.brew
 	echo "${RED}Deleted${NC} Homebrew instance"
 	echo ""
@@ -43,12 +42,7 @@ fi
 echo "${GREEN}Downloading${NC} Homebrew"
 git clone --depth=1 https://github.com/Homebrew/brew ~/goinfre/.brew
 
-# Add custom PATH
-if ! grep -q "export PATH=~/goinfre/.brew/bin:$PATH" ~/.zshrc
-then
-	echo "export PATH=~/goinfre/.brew/bin:$PATH" >> ~/.zshrc
-	source ~/.zshrc
-fi
+source ~/.zshrc
 
 # Trigger Homebrew upgrade
 echo "${GREEN}Updating${NC} Homebrew"
