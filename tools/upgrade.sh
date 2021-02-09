@@ -8,18 +8,21 @@ FTH=~/.42helpers
 # Load styles
 . ${FTH}/tools/styles.sh &> /dev/null
 
-function upgrade_prompt {
+install() {
+	echo "Upgrading ${bold}42helpers${normal}..."
+	git -C ${FTH} pull origin main --no-rebase
+	echo "Done :-)"
+}
+
+upgrade_prompt() {
 	while read -t -k 1 option; do true; done
 	[[ "$option" != ($'\n'|"") ]] && echo
 	echo -n "[42helpers] Would you like to upgrade? [Y/n] "
 	read -r -k 1 option
 	[[ "$option" != $'\n' ]] && echo
 	case "$option" in
-		[yY$'\n'])
-			echo "Upgrading ${bold}42helpers${normal}..."
-			git -C ${FTH} pull origin main --no-rebase
-			echo "Done :-)";;
-		[nN]) echo "Ok, maybe next time." ;;
+		[yY$'\n']) install;;
+		[nN]) echo "Ok, maybe next time.";;
 	esac
 }
 
@@ -33,7 +36,11 @@ then
 	fi
 	if ! git -C ${FTH} diff --exit-code origin/main..main > /dev/null
 	then
-		upgrade_prompt
+		if ! [[ $1 = "-y" ]]; then
+			upgrade_prompt
+		else
+			install
+		fi
 	else
 		if ! [[ $1 = "-q" ]]; then
 			echo "${bold}42helpers${normal} is up to date."
