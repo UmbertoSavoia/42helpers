@@ -1,4 +1,4 @@
-!#/bin/zsh
+#!/bin/zsh
 
 # Set env var
 export FTH=~/.42helpers
