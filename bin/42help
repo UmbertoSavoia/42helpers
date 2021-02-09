@@ -2,7 +2,23 @@
 
 . ${FTH}/tools/select.sh
 
+normal=`tput sgr0`
+cyan=`tput setaf 6`
+
 version=v2.0
+
+echo "${cyan}"
+echo "                 ▄▄                  ▄▄                                   "
+echo "                ███                ▀███                                   "
+echo "                 ██                  ██                                   "
+echo "     ▄██  ███▀██▄███████▄   ▄▄█▀██   ██ ▀████████▄  ▄▄█▀██▀███▄███ ▄██▀███"
+echo "    ████ ███   ████    ██  ▄█▀   ██  ██   ██   ▀██ ▄█▀   ██ ██▀ ▀▀ ██   ▀▀"
+echo "  ▄█▀ ██     ▄▄████    ██  ██▀▀▀▀▀▀  ██   ██    ██ ██▀▀▀▀▀▀ ██     ▀█████▄"
+echo "▄█▀   ██  ▄▄█▀   ██    ██  ██▄    ▄  ██   ██   ▄██ ██▄    ▄ ██     █▄   ██"
+echo "████████████████████  ████▄ ▀█████▀▄████▄ ██████▀   ▀█████▀████▄   ██████▀"
+echo "     ██                                   ██                              "
+echo "     ██                                 ▄████▄                            "
+echo "${normal}"
 
 echo -e "Hey ${USER}! Looks like you need some help. What can I do for you?\n"
 
