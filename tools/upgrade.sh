@@ -3,7 +3,7 @@
 # Define FTH if undefined
 # ! [[ -v FTH ]] && FTH=~/.42helpers
 
-FTH="~/.42helpers"
+FTH=~/.42helpers
 
 # Load styles
 . ${FTH}/tools/styles.sh &> /dev/null

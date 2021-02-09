@@ -1,10 +1,10 @@
 #!/bin/zsh
 
 # Set env var
-FTH="~/.42helpers"
+FTH=~/.42helpers
 
 # Check for upgrades
-zsh $FTH/tools/upgrade.sh -q
+zsh ~/42/fork/tools/upgrade.sh -q
 
 # Add bin folder to PATH
 if [ -d $FTH/bin ]; then

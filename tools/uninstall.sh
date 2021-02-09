@@ -29,7 +29,7 @@ then
 	rm -rf ${FTH}
 
 	echo "Removing startup command from ~/.zshrc..."
-	sed -i '' 's/zsh ~\/.42helpers\/tools\/rc.sh//g' ~/.zshrc
+	sed -i '' 's/source ~\/.42helpers\/tools\/rc.sh//g' ~/.zshrc
 
 	# Remove trailing spaces and newlines at the end of .zshrc
 	# https://stackoverflow.com/a/8635286
