@@ -3,7 +3,7 @@
 # Define FTH if undefined
 # ! [[ -v FTH ]] && FTH=~/.42helpers
 
-FTH=~/.42helpers
+FTH="~/.42helpers"
 
 # Load styles
 . ${FTH}/tools/styles.sh &> /dev/null
@@ -35,7 +35,9 @@ then
 	then
 		upgrade_prompt
 	else
-		echo "${bold}42helpers${normal} is up to date."
+		if ! [[ $1 = "-q" ]]; then
+			echo "${bold}42helpers${normal} is up to date."
+		fi
 	fi
 else
 	echo "${bold}42helpers${normal} is not installed."
