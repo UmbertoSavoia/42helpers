@@ -11,4 +11,7 @@ if [ -d $FTH/bin ]; then
 	export PATH=$FTH/bin:$PATH
 fi
 
-# TODO: load brew path variable
+# Load brew path variable
+if [ -d ~/goinfre/.brew ]; then
+	export PATH=~/goinfre/.brew/bin:$PATH
+fi
