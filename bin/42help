@@ -1,6 +1,8 @@
 #!/bin/bash
 
-. ${FTH}/tools/select.sh
+FTH=~/.42helpers
+
+. $FTH/tools/select.sh
 
 normal=`tput sgr0`
 cyan=`tput setaf 6`
