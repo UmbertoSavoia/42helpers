@@ -19,7 +19,7 @@ install() {
 
 	if ! grep -q "source ${FTH}/tools/rc.sh" ~/.zshrc; then
 		echo "Adding startup command to ~/.zshrc..."
-		echo "\nsource ~/.42helpers/tools/rc.sh" >> ~/.zshrc
+		echo "\nsource \~/.42helpers/tools/rc.sh" >> ~/.zshrc
 	fi
 }
 
