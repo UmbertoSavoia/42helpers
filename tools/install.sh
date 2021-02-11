@@ -17,9 +17,9 @@ install() {
 	echo "Installing ${bold}42helpers${normal}..."
 	git clone https://github.com/UmbertoSavoia/42helpers.git ${FTH}
 
-	if ! grep -q "source ${FTH}/tools/rc.sh" ~/.zshrc; then
+	if ! grep -q "source ~/.42helpers/tools/rc.sh" ~/.zshrc; then
 		echo "Adding startup command to ~/.zshrc..."
-		echo "\nsource \~/.42helpers/tools/rc.sh" >> ~/.zshrc
+		echo "\nsource ~/.42helpers/tools/rc.sh" >> ~/.zshrc
 	fi
 }
 
