@@ -6,6 +6,8 @@ GREEN='\e[32m'
 BLUE='\e[34m'
 ORANGE='\e[33m'
 
+clear
+
 echo "${BLUE}"
 echo "    ____  ____  ________ __ __________ ";
 echo "   / __ \/ __ \/ ____/ //_// ____/ __ \\";
@@ -22,56 +24,55 @@ echo "                                 lrocca";
 echo "                                 mcossu";
 echo "${NC}"
 
-if [[ "$1" == "help" ]]
-then
-	echo "${ORANGE}dock${NC}\t\tMoves Container folder"
-	echo "${ORANGE}clean${NC}\t\tRemoves all traces of Docker"
-	echo "${ORANGE}kill${NC}\t\tKills Docker process forcibly"
-	echo ""
-	exit
-fi
-
-if pgrep -xq Docker
-then
+kill() {
+	if pgrep -xq Docker; then
 	echo "${RED}Closing${NC} Docker..."
 	killall Docker &> /dev/null
 else
 	echo "Docker wasn't running."
 	killexit=1
 fi
+}
 
-if [[ "$1" == "kill" ]]
-then
-	echo ""
-	exit killexit
-fi
-
-if [[ "$1" == "clean" ]]
-then
+clean() {
 	rm -rf ~/Library/Containers/com.docker.docker
 	rm -rf ~/goinfre/.docker
-	echo "${RED}Deleted${NC}\t\tContainers folder"
+	echo "${RED}Deleting${NC} Containers folder..."
+	echo ""
+}
+
+if [[ "$1" == "kill" ]]; then
+	kill
+	exit killexit
+elif [[ "$1" == "clean" ]]; then
+	clean
+elif [[ "$1" == "move" ]]; then
+	kill
+	if ! [ -d ~/goinfre/.docker/containers ]; then
+	mkdir -p ~/goinfre/.docker/containers
+		echo "${GREEN}Creating${NC} new folder for Containers..."
+fi
+
+	if [ -d ~/Library/Containers/com.docker.docker ]; then
+		echo "${ORANGE}Moving${NC} original folder to new..."
+	cp -R ~/Library/Containers/com.docker.docker/ ~/goinfre/.docker/containers/ &> /dev/null
+	fi
+
+	if ! [ -h ~/Library/Containers/com.docker.docker ]; then
+	rm -rf ~/Library/Containers/com.docker.docker
+	ln -sf ~/goinfre/.docker/containers ~/Library/Containers/com.docker.docker
+		echo "${GREEN}Creating${NC} link from orignal path to new folder..."
+fi
+
+	echo "${GREEN}Opening${NC} Docker..."
+open -a Docker
+echo ""
+else
+	echo "Available commands:\n"
+	echo "${ORANGE}help${NC}	Print this help message"
+	echo "${ORANGE}move${NC}	Move Container folder"
+	echo "${ORANGE}clean${NC}	Delete Container folder"
+	echo "${ORANGE}kill${NC}	Kill Docker process forcibly"
 	echo ""
 	exit
 fi
-
-if [ -d ~/goinfre/.docker/containers ]
-then
-	mkdir -p ~/goinfre/.docker/containers
-	echo "${GREEN}Created${NC}\t\tnew folder for Containers"
-fi
-
-if [ -d ~/Library/Containers/com.docker.docker ]
-then
-	cp -R ~/Library/Containers/com.docker.docker/ ~/goinfre/.docker/containers/ &> /dev/null
-	echo "${ORANGE}Moved${NC}\t\toriginal folder to new"
-elif [ -h ~/Library/Containers/com.docker.docker ]
-then
-	rm -rf ~/Library/Containers/com.docker.docker
-	ln -sf ~/goinfre/.docker/containers ~/Library/Containers/com.docker.docker
-	echo "${GREEN}Created${NC}\t\tlink from orignal path to new folder"
-fi
-
-open -a Docker
-echo "${GREEN}Opened${NC}\t\tDocker"
-echo ""
