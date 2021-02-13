@@ -49,24 +49,24 @@ elif [[ "$1" == "clean" ]]; then
 elif [[ "$1" == "move" ]]; then
 	kill
 	if ! [ -d ~/goinfre/.docker/containers ]; then
-	mkdir -p ~/goinfre/.docker/containers
+		mkdir -p ~/goinfre/.docker/containers
 		echo "${GREEN}Creating${NC} new folder for Containers..."
-fi
+	fi
 
 	if [ -d ~/Library/Containers/com.docker.docker ]; then
 		echo "${ORANGE}Moving${NC} original folder to new..."
-	cp -R ~/Library/Containers/com.docker.docker/ ~/goinfre/.docker/containers/ &> /dev/null
+		cp -R ~/Library/Containers/com.docker.docker/ ~/goinfre/.docker/containers/ &> /dev/null
 	fi
 
 	if ! [ -h ~/Library/Containers/com.docker.docker ]; then
-	rm -rf ~/Library/Containers/com.docker.docker
-	ln -sf ~/goinfre/.docker/containers ~/Library/Containers/com.docker.docker
+		rm -rf ~/Library/Containers/com.docker.docker
+		ln -sf ~/goinfre/.docker/containers ~/Library/Containers/com.docker.docker
 		echo "${GREEN}Creating${NC} link from orignal path to new folder..."
-fi
+	fi
 
 	echo "${GREEN}Opening${NC} Docker..."
-open -a Docker
-echo ""
+	open -a Docker
+	echo ""
 else
 	echo "Available commands:\n"
 	echo "${ORANGE}help${NC}	Print this help message"
