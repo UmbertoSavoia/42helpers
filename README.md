@@ -3,6 +3,9 @@
 # 42helpers
 
 A suite of helpers that will aid you with everyday tasks.
+## [NEW] **42dark**
+
+Set your macOS theme to dark automatically!
 
 ## Installation
 
@@ -32,6 +35,17 @@ Main command:
 
 <details>
 	<summary>
+		<b>42dark</b>
+	</summary>
+
+### Tip
+
+You can add it to your *Login Items* in the *Users & Groups* preferences section to run it every time you log in.
+
+</details>
+
+<details>
+	<summary>
 		<b>42docker</b>
 	</summary>
 
@@ -53,7 +67,7 @@ Use this helper to manage your Docker installation.
 	<summary>
 		<b>42brew</b>
 	</summary>
-	
+
 Use this helper to manage your Brew installation.
 
 You can:
